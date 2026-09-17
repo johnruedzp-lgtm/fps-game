@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  >
+  <meta name="description" content="A lightweight browser FPS game">
+  <title>Neon Strike FPS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game">
+    <canvas id="gameCanvas"></canvas>
+
+    <section id="hud" class="hidden" aria-label="Game status">
+      <div class="hud-row">
+        <div class="hud-card">
+          <span class="label">SCORE</span>
+          <strong id="score">0</strong>
+        </div>
+
+        <div class="hud-card center">
+          <span class="label">WAVE</span>
+          <strong id="wave">1</strong>
+        </div>
+
+        <div class="hud-card right">
+          <span class="label">ENEMIES</span>
+          <strong id="enemies">0</strong>
+        </div>
+      </div>
+
+      <div id="crosshair" aria-hidden="true">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <b></b>
+      </div>
+
+      <div id="hitMarker" aria-hidden="true">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+
+      <div class="bottom-hud">
+        <div class="health-panel">
+          <span>HEALTH</span>
+          <div class="bar">
+            <div id="healthBar"></div>
+          </div>
+          <strong id="health">100</strong>
+        </div>
+
+        <div id="message"></div>
+
+        <div class="ammo-panel">
+          <span id="weaponName">RIFLE</span>
+          <strong><span id="ammo">30</span> / <span id="reserve">180</span></strong>
+        </div>
+      </div>
+
+      <div id="damageFlash"></div>
+      <div id="muzzleFlash"></div>
+      <div id="weapon" aria-hidden="true">
+        <div class="weapon-sight"></div>
+        <div class="weapon-body"></div>
+        <div class="weapon-barrel"></div>
+        <div class="weapon-grip"></div>
+      </div>
+    </section>
+
+    <section id="menu" class="overlay">
+      <div class="panel">
+        <p class="eyebrow">BROWSER FPS</p>
+        <h1>NEON STRIKE</h1>
+        <p>
+          Survive increasingly difficult enemy waves in a procedural arena.
+        </p>
+
+        <div class="controls">
+          <div><kbd>W A S D</kbd><span>Move</span></div>
+          <div><kbd>MOUSE</kbd><span>Aim</span></div>
+          <div><kbd>CLICK</kbd><span>Shoot</span></div>
+          <div><kbd>R</kbd><span>Reload</span></div>
+          <div><kbd>SHIFT</kbd><span>Sprint</span></div>
+          <div><kbd>SPACE</kbd><span>Jump</span></div>
+          <div><kbd>ESC</kbd><span>Pause</span></div>
+        </div>
+
+        <button id="startButton" type="button">DEPLOY</button>
+        <label class="quality">
+          Render scale
+          <select id="quality">
+            <option value="0.65">Performance</option>
+            <option value="0.82" selected>Balanced</option>
+            <option value="1">Quality</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section id="pauseMenu" class="overlay hidden">
+      <div class="panel small">
+        <h2>PAUSED</h2>
+        <p>Click resume to capture the mouse and continue.</p>
+        <button id="resumeButton" type="button">RESUME</button>
+      </div>
+    </section>
+
+    <section id="gameOver" class="overlay hidden">
+      <div class="panel small">
+        <p class="eyebrow">MISSION FAILED</p>
+        <h2>GAME OVER</h2>
+        <p>Score: <strong id="finalScore">0</strong></p>
+        <p>Wave reached: <strong id="finalWave">1</strong></p>
+        <button id="restartButton" type="button">REDEPLOY</button>
+      </div>
+    </section>
+
+    <div id="unsupported" class="overlay hidden">
+      <div class="panel small">
+        <h2>Browser not supported</h2>
+        <p>This game requires Canvas and Pointer Lock support.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
